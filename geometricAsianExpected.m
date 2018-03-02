@@ -1,4 +1,7 @@
-function [geometric_asian_expected_asian] = geometricAsianExpectedLowerBound(S0,K,sigma,r,T,n)
+%%% Takes values as parameters. NOT arrays.
+%%% Calculates the values of the Expected price value of the asian call
+%%% option
+function [geometric_asian_expected_asian] = geometricAsianExpected(S0,K,sigma,r,T,n)
     delta = T/n;
     T_hat = ((n+1)*delta)/2;
     sigma_hat = sigma*sqrt((2*n+1)/(3*n));

@@ -1,3 +1,6 @@
+%%% Computes the approximation of the Asian call option price using Monte
+%%% Carlo and the lower bound of the asian call option as a control variate
+
 function [MCstd, MCAsianArithPrice, MCConfInt,exec_time] = asianMCCtrVarLB(S0, K, sigma, r, T, dt, n, M, bstarhat, alpha)
 
 tic;

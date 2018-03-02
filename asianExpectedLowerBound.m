@@ -1,3 +1,6 @@
+%%% Computes the precise expected lower bound value for the asian call
+%%% option
+
 function [expected_asian] = asianExpectedLowerBound(S0,K,sigma,r,T,n)
 
     sum_result = 0;

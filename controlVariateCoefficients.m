@@ -1,3 +1,8 @@
+%%% Calculates the best control variate coefficients and their respective
+%%% bstarhats which will be used later on to approximate the prices of the
+%%% call options. It calculates both the geometic mean and the lower bound
+%%% coefficients
+
 function [correlcoef_lb, bstarhat_lb,correlcoef_geo, bstarhat_geo] = controlVariateCoefficients(S0, K, sigma, r, T, dt, Mb)
 
 n = T/dt;

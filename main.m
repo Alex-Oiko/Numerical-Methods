@@ -7,7 +7,7 @@ geometric_asian_option_expected = [];
 for i=1:size(n,2)
     for k=1:size(K,2)
         expected_asian_lower_bound(i,k) = asianExpectedLowerBound(S0,K(k),sigma,r,T,n(i));
-        geometric_asian_option_expected(i,k) = geometricAsianExpectedLowerBound(S0,K(k),sigma,r,T,n(i));
+        geometric_asian_option_expected(i,k) = geometricAsianExpected(S0,K(k),sigma,r,T,n(i));
     end
 end
 

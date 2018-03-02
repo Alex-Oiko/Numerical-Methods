@@ -1,3 +1,7 @@
+%%% Only takes values as inputs. Not arrays
+%%% Calculates the approximation of the expected lower bound for the case
+%%% of continuous monitoring.
+
 function expected_value = expectationContinuousMonitoringApprox(S0,K,sigma,r,T,n)
     gamma = (log(K/S0)-(r-sigma^2/2)*(T/2))/sigma;
     
