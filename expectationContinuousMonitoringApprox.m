@@ -1,4 +1,4 @@
-function expected_value = expectationContinuousMonitoringApprox(S0,r,sigma,K,T,n)
+function expected_value = expectationContinuousMonitoringApprox(S0,K,sigma,r,T,n)
     gamma = (log(K/S0)-(r-sigma^2/2)*(T/2))/sigma;
     
     delta = T/n;
