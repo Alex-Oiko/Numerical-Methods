@@ -1,9 +1,12 @@
 %%% Computes the precise expected lower bound value for the asian call
 %%% option
 
-function [expected_asian] = asianExpectedLowerBound(S0,K,sigma,r,T,n)
+%%% added option delta in output
+
+function [expected_asian,expected_asian_delta] = asianExpectedLowerBound(S0,K,sigma,r,T,n)
 
     sum_result = 0;
+    sum_result_pdf = 0;
 
     delta = T/n;
     T_hat = ((n+1)*delta)/2;
@@ -18,7 +21,11 @@ function [expected_asian] = asianExpectedLowerBound(S0,K,sigma,r,T,n)
         a_k = sigma*sqrt(delta)*(a_k_num/a_k_den);
 
         sum_result = sum_result + (exp(m_k+sigma_k^2/2))*normcdf(b+a_k);
+        sum_result_pdf = sum_result_pdf + (exp(m_k+sigma_k^2/2))*normpdf(b+a_k);
     end
     expected_asian = ((S0*exp(-r*T))/n)*sum_result-K*exp(-r*T)*normcdf(b);
+    expected_asian_delta = ((exp(-r*T))/n)*sum_result ...
+    + (S0*exp(-r*T)/n)*sum_result_pdf*(1/S0)*(1/(sigma_hat*sqrt(T_hat))) ...
+    - K*exp(-r*T)*normpdf(b)*(1/S0)*(1/(sigma_hat*sqrt(T_hat)));
 end
 

@@ -15,7 +15,7 @@ for j = 1:M
     LB(j) = exp(-r*T)*max(mean(S(2:n+1))-K,0)*(geomean(S(2:n+1))>K);
 end
 
-LB_expected = asianExpectedLowerBound(S0, K, sigma, r, T, n); 
+[LB_expected LB_expected_delta] = asianExpectedLowerBound(S0, K, sigma, r, T, n); 
 Cb = C - bstarhat*(LB-LB_expected); 
 MCAsianArithPrice = mean(Cb);
 exec_time = toc;
