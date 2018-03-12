@@ -1,0 +1,51 @@
+\documentclass[10pt,oneside,a4paper]{article}
+\usepackage{amsmath,amssymb}
+\usepackage{bbm}
+\usepackage{amsfonts}
+\DeclareMathOperator{\E}{\mathbb{E}}
+
+
+\begin{document}
+\begin{flushleft}
+
+
+\section{Task 1}
+\subsection{}
+\textsl{Finding the first order price sensitivity of Lower Bound of Arithmetic and Geometric Asian options}
+
+\begin{align*}
+LB_n &= e^{-rT}\left( \frac{1}{n}\sum_{k=1}^{n}S_k - K\right) \mathbbm{1}_{\left( \prod_{k=1}^{n}S_k\right) ^{\frac{1}{n}} >K}\\
+G_n &= e^{-rT} max \left(\left(\prod_{k=1}^{n}S_k\right) ^{\frac{1}{n}} - K, 0 \right)\\
+g\left(S_i|S_{i-1}\right) &= \frac{1}{S_i \sigma\sqrt{t_i - t_{i-1}}}\Phi\left(\xi\left(S_i|S_{i-1}\right)\right)\\
+\mu'_{LB, S_0} &= \E _{S_0}\left(e^{-rT}\left( \frac{1}{n}\sum_{k=1}^{n}S_k - K\right)\mathbbm{1}_{\left( \prod_{k=1}^{n}S_k\right) ^{\frac{1}{n} }>K} \cdot \frac{\xi\left(S_i|S_{i-1}\right)}{S_0 \sigma \sqrt{t_1}} \right)\\
+&= \E _{S_0}\left(e^{-rT}\left( \frac{1}{n}\sum_{k=1}^{n}S_k - K\right)\mathbbm{1}_{\left( \prod_{k=1}^{n}S_k\right) ^{\frac{1}{n} }>K} \cdot \frac{ln\frac{S_1}{S_0} - \left(r - \frac{1}{2}\sigma^2\right)\left(t_1 - t_0\right)}{\sigma\sqrt{t_1 - t_0}S_0\sigma\sqrt{t_1}}\right)
+\end{align*}
+
+\vspace{5mm}
+
+\begin{align*}
+\mu'_{G, S_0} &= \E _{S_0}\left(e^{-rT}\left(\left(\prod_{k=1}^{n}S_k\right) ^{\frac{1}{n}} - K\right)^{+} \cdot \frac{\xi\left(S_i|S_{i-1}\right)}{S_0 \sigma \sqrt{t_1}} \right)\\
+\end{align*}
+
+\textsl{No, as shown above, the lower bound payoff is discontinuous at $\left( \prod_{k=1}^{n}S_k\right) ^{\frac{1}{n}} =K$. Such that it is not possible to obtain the PW estimator. LR first order sensitivity estimator should be used instead.}
+
+\subsection{}
+
+\begin{align*}
+\frac{d \E\left(LB_n\right)}{dS_0} &= \frac{e^{-rT}}{n}\sum_{k=1}^{n} e^{\mu_k + \sigma_k^2} \cdot \mathcal{N}\left(b+a_k\right) + \frac{S_0 e^{-rT}}{n}\sum_{k=1}^{n}e^{\mu_k + \sigma_k^2} \cdot \phi\left(b+a_k\right) \cdot \frac{1}{S_0}\frac{1}{\hat{\sigma}\sqrt{\hat{T}}}\\
+& - K e^{-rT} \cdot \phi\left(b \right) \cdot \frac{1}{S_0}\frac{1}{\hat{\sigma}\sqrt{\hat{T}}}\\
+ &= \frac{e^{-rT}}{n}\sum_{k=1}^{n} e^{\mu_k + \sigma_k^2} \cdot \mathcal{N}\left(b+a_k\right) + \frac{e^{-rT}}{n}\sum_{k=1}^{n}e^{\mu_k + \sigma_k^2} \cdot \phi\left(b+a_k\right) \cdot \frac{1}{\hat{\sigma}\sqrt{\hat{T}}}\\
+& - K e^{-rT} \cdot \phi\left(b \right) \cdot \frac{1}{S_0}\frac{1}{\hat{\sigma}\sqrt{\hat{T}}}\\
+\end{align*} 
+
+\vspace{5mm}
+\begin{align*}
+\frac{d G_n}{dS_0} &= e^{\left(r - \frac{\sigma^2}{2} + \frac{\hat{\sigma}^2}{2}\right)\hat{T} - rT} \cdot \mathcal{N}\left(d\right) + S_0 e^{\left(r - \frac{\sigma^2}{2} + \frac{\hat{\sigma}^2}{2}\right)\hat{T} - rT} \phi \left(d\right) \frac{1}{S_0} \frac{1}{\hat{\sigma}\sqrt{\hat{T}}}\\
+& - K e^{-rT} \cdot \phi\left(d - \hat{\sigma}\sqrt{\hat{T}}\right) \cdot \frac{1}{S_0}\frac{1}{\hat{\sigma}\sqrt{\hat{T}}}\\
+&= e^{\left(r - \frac{\sigma^2}{2} + \frac{\hat{\sigma}^2}{2}\right)\hat{T} - rT} \cdot \mathcal{N}\left(d\right) +e^{\left(r - \frac{\sigma^2}{2} + \frac{\hat{\sigma}^2}{2}\right)\hat{T} - rT} \phi \left(d\right) \frac{1}{\hat{\sigma}\sqrt{\hat{T}}}\\
+& - K e^{-rT} \cdot \phi\left(d - \hat{\sigma}\sqrt{\hat{T}}\right) \cdot \frac{1}{S_0}\frac{1}{\hat{\sigma}\sqrt{\hat{T}}}\\
+\end{align*}
+
+
+\end{flushleft}
+\end{document}

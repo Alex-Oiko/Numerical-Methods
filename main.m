@@ -1,6 +1,6 @@
 S0 = 100; r = 0.04; sigma = 0.3; K = [90 100 110]; T = 1; n = [4 12 50]; M = 1E5; alpha = 0.95;
 
-% %% Question 3
+%% Question 3
 expected_asian_lower_bound = [];
 expected_asian_lower_bound_delta = [];
 geometric_asian_option_expected = [];
@@ -28,6 +28,7 @@ for i=1:20
     continuous_monitoring_approx(i) = expectationContinuousMonitoringApprox(S0,K(2),sigma,r,T,2^i);
 end
 
+
 %% Question 4 Price as Control Variate
 geo_simulations = [];
 lb_simulations = [];
@@ -49,10 +50,10 @@ for i=1:size(n,2)
     end
 end
 
-% Question 4 Delta as Control Variate
+% % Question 4 Delta as Control Variate
 geo_delta_simulations = [];
 lb_delta_simulations = [];
-epsilon_delta = [];
+epsilon = [];
 
 for i=1:size(n,2)
    for k = 1:size(K,2)
