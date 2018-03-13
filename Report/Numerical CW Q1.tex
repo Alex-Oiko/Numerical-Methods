@@ -28,13 +28,35 @@
 
 \section{Task 1}
 \subsection{}
-\textsl{Finding the first order price sensitivity of Lower Bound of Arithmetic and Geometric Asian options}
+\subsubsection{•}
+\textsl{Finding the first order price sensitivity of Lower Bound of Arithmetic and Geometric Asian options using likelihood ratio method. The LR formulation is given as}
 
+\begin{align*}
+\mu_{C, \theta} &= \E_\theta \left(C\right) \\
+& = \E_\theta\left(f \left(S\right)\right) \\
+& = \int_{R^n}^{} f \left(s\right) ds\\
+\mu'_{C, \theta}&= \int_{R^n}^{} f \left(s\right)\frac{d \, g_\theta\left(s\right)}{d\theta}ds\\
+\end{align*}
+
+\textsl{by multiplying and dividing $g_\theta\left(s\right)$ the expectation expression is obtained}
+
+\begin{align*}
+\int_{R^n}^{} f \left(s\right)\frac{d \, g_\theta\left(s\right)}{d \theta} \frac{1}{g_\theta\left(s\right) }g_\theta\left(s\right) ds &= \E_\theta \left(f\left(S\right)\frac{d \, g_\theta\left(S\right)}{d \theta} \frac{1}{g_\theta\left(S\right) }\right)\\
+&= \E_\theta \left(f\left(S\right)\frac{d \,ln \, g_\theta \left(S\right)}{d \, \theta}\right)\\
+\end{align*}
+\textsl{using the above expression, we take the expected value of the product of the discounted payoff function and the score as the LR first order sensitivity respected to $S_0$. We have the discounted payoff functions for the arithmetic Asian option Lower Bound  and for the geometric Asian option in below.}
 \begin{align*}
 LB_n &= e^{-rT}\left( \frac{1}{n}\sum_{k=1}^{n}S_k - K\right) \mathbbm{1}_{\left( \prod_{k=1}^{n}S_k\right) ^{\frac{1}{n}} >K}\\
 G_n &= e^{-rT} max \left(\left(\prod_{k=1}^{n}S_k\right) ^{\frac{1}{n}} - K, 0 \right)\\
-g\left(S_i|S_{i-1}\right) &= \frac{1}{S_i \sigma\sqrt{t_i - t_{i-1}}}\Phi\left(\xi\left(S_i|S_{i-1}\right)\right)\\
-\mu'_{LB, S_0} &= \E _{S_0}\left(e^{-rT}\left( \frac{1}{n}\sum_{k=1}^{n}S_k - K\right)\mathbbm{1}_{\left( \prod_{k=1}^{n}S_k\right) ^{\frac{1}{n} }>K} \cdot \frac{\xi\left(S_i|S_{i-1}\right)}{S_0 \sigma \sqrt{t_1}} \right)\\
+\end{align*}
+
+\textsl{the score for computing an Asian option delta is given as}
+\begin{align*}
+\frac{d \, ln \, g_{S_{0}} (S_1, ...., S_n)}{d S_0} &= \frac{\xi\left(S_1|S_{0}\right)}{S_0 \sigma \sqrt{t_1}}\\
+\end{align*}
+
+\begin{align*}
+\mu'_{LB, S_0} &= \E _{S_0}\left(e^{-rT}\left( \frac{1}{n}\sum_{k=1}^{n}S_k - K\right)\mathbbm{1}_{\left( \prod_{k=1}^{n}S_k\right) ^{\frac{1}{n} }>K} \cdot \frac{\xi\left(S_1|S_{0}\right)}{S_0 \sigma \sqrt{t_1}} \right)\\
 &= \E _{S_0}\left(e^{-rT}\left( \frac{1}{n}\sum_{k=1}^{n}S_k - K\right)\mathbbm{1}_{\left( \prod_{k=1}^{n}S_k\right) ^{\frac{1}{n} }>K} \cdot \frac{ln\frac{S_1}{S_0} - \left(r - \frac{1}{2}\sigma^2\right)\left(t_1 - t_0\right)}{\sigma\sqrt{t_1 - t_0}S_0\sigma\sqrt{t_1}}\right)
 \end{align*}
 
@@ -43,11 +65,16 @@ g\left(S_i|S_{i-1}\right) &= \frac{1}{S_i \sigma\sqrt{t_i - t_{i-1}}}\Phi\left(\
 \begin{align*}
 \mu'_{G, S_0} &= \E _{S_0}\left(e^{-rT}\left(\left(\prod_{k=1}^{n}S_k\right) ^{\frac{1}{n}} - K\right)^{+} \cdot \frac{\xi\left(S_i|S_{i-1}\right)}{S_0 \sigma \sqrt{t_1}} \right)\\
 \end{align*}
-
+\subsubsection{•}
 \textsl{No, as shown above, the lower bound payoff is discontinuous at $\left( \prod_{k=1}^{n}S_k\right) ^{\frac{1}{n}} =K$. Such that it is not possible to obtain the PW estimator. LR first order sensitivity estimator should be used instead.}
 
 \subsection{}
-
+\textsl{The exact closed formed solutions for the expected Lower Bound and the Geometric payoff are given}
+\begin{align*}
+\E\left(LB_n\right) &= \frac{S_0 e^{-rT}}{n}\sum_{k=1}^{n} e^{\mu_k + \sigma_k^2} \cdot \mathcal{N}\left(b+a_k\right)  - K e^{-rT} \cdot \mathcal{N}\left(b \right)\\
+\E\left(G_n\right) &= S_0 e^{\left(r - \frac{\sigma^2}{2} + \frac{\hat{\sigma}^2}{2}\right)\hat{T} - rT} \cdot \mathcal{N}\left(d\right) - K e^{-rT} \cdot \mathcal{N}\left(d - \hat{\sigma}\sqrt{\hat{T}}\right)
+\end{align*}
+\textsl{by taking the derivative respected to $S_0$}
 \begin{align*}
 \frac{d \E\left(LB_n\right)}{dS_0} &= \frac{e^{-rT}}{n}\sum_{k=1}^{n} e^{\mu_k + \sigma_k^2} \cdot \mathcal{N}\left(b+a_k\right) + \frac{S_0 e^{-rT}}{n}\sum_{k=1}^{n}e^{\mu_k + \sigma_k^2} \cdot \phi\left(b+a_k\right) \cdot \frac{1}{S_0}\frac{1}{\hat{\sigma}\sqrt{\hat{T}}}\\
 & - K e^{-rT} \cdot \phi\left(b \right) \cdot \frac{1}{S_0}\frac{1}{\hat{\sigma}\sqrt{\hat{T}}}\\
@@ -62,6 +89,8 @@ g\left(S_i|S_{i-1}\right) &= \frac{1}{S_i \sigma\sqrt{t_i - t_{i-1}}}\Phi\left(\
 &= e^{\left(r - \frac{\sigma^2}{2} + \frac{\hat{\sigma}^2}{2}\right)\hat{T} - rT} \cdot \mathcal{N}\left(d\right) +e^{\left(r - \frac{\sigma^2}{2} + \frac{\hat{\sigma}^2}{2}\right)\hat{T} - rT} \phi \left(d\right) \frac{1}{\hat{\sigma}\sqrt{\hat{T}}}\\
 & - K e^{-rT} \cdot \phi\left(d - \hat{\sigma}\sqrt{\hat{T}}\right) \cdot \frac{1}{S_0}\frac{1}{\hat{\sigma}\sqrt{\hat{T}}}\\
 \end{align*}
+
+\textsl{where $\mathcal{N}$ is the normal cdf and $\phi$ is the normal pdf.}
 
 
 \end{flushleft}
