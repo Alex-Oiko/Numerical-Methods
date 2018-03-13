@@ -50,7 +50,7 @@ for i=1:size(n,2)
     end
 end
 
-% % Question 4 Delta as Control Variate
+%% Question 4 Delta as Control Variate
 geo_delta_simulations = [];
 lb_delta_simulations = [];
 epsilon = [];
