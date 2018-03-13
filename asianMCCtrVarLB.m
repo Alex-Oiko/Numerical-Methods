@@ -11,14 +11,14 @@ for j = 1:M
     for i = 1:n
         S(i+1) = S(i)*exp((r-sigma^2/2)*dt+sigma*sqrt(dt)*randn); 
     end
-    C(j) = exp(-r*T)*max(mean(S(2:n+1))-K,0); 
-    LB(j) = exp(-r*T)*max(mean(S(2:n+1))-K,0)*(geomean(S(2:n+1))>K);
+    C(j) = exp(-r*T)*max(mean(S(2:n+1))-K,0); % Asian Call option Monte Carlo values
+    LB(j) = exp(-r*T)*max(mean(S(2:n+1))-K,0)*(geomean(S(2:n+1))>K); % The lower bound simulation of the Asian Call Option using Monte Carlo methods
 end
 
 [LB_expected LB_expected_delta] = asianExpectedLowerBound(S0, K, sigma, r, T, n); 
-Cb = C - bstarhat*(LB-LB_expected); 
+Cb = C - bstarhat*(LB-LB_expected);  %calculates the control variate samples
 MCAsianArithPrice = mean(Cb);
-exec_time = toc;
-MCstd = std(Cb)/sqrt(M);
+exec_time = toc; %execution time
+MCstd = std(Cb)/sqrt(M); %standard error
 format short g
-MCConfInt = MCAsianArithPrice + norminv(0.5+alpha/2)*MCstd*[-1 1]; 
+MCConfInt = MCAsianArithPrice + norminv(0.5+alpha/2)*MCstd*[-1 1]; %confidence interval

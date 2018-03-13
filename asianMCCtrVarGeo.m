@@ -11,14 +11,14 @@ for j = 1:M
     for i = 1:n
         S(i+1) = S(i)*exp((r-sigma^2/2)*dt+sigma*sqrt(dt)*randn); 
     end
-    C(j) = exp(-r*T)*max(mean(S(2:n+1))-K,0); 
-    G(j) = exp(-r*T)*max(geomean(S(2:n+1))-K,0);
+    C(j) = exp(-r*T)*max(mean(S(2:n+1))-K,0); % Asian Call option Monte Carlo values
+    G(j) = exp(-r*T)*max(geomean(S(2:n+1))-K,0); % Geometric Asian option Monte Carlo values
 end
 
 GTrue = asianGeometricCall(S0, K, r, T, n, sigma); 
-Cb = C - bstarhat*(G-GTrue); 
+Cb = C - bstarhat*(G-GTrue); %the control variate estimates
 MCAsianArithPrice = mean(Cb);
-exec_time = toc;
-MCstd = std(Cb)/sqrt(M);
+exec_time = toc; %execution time
+MCstd = std(Cb)/sqrt(M); % standard error
 format short g
-MCConfInt = MCAsianArithPrice + norminv(0.5+alpha/2)*MCstd*[-1 1]; 
+MCConfInt = MCAsianArithPrice + norminv(0.5+alpha/2)*MCstd*[-1 1]; %confidence intervals

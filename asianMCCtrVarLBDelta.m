@@ -8,6 +8,7 @@ C = zeros(1,M);
 LB = zeros(1,M);
 for j = 1:M
     S = [S0 zeros(1,n)];
+    %simulating the stock using Monte Carlo
     for i = 1:n
         S(i+1) = S(i)*exp((r-sigma^2/2)*dt+sigma*sqrt(dt)*randn); 
     end
@@ -16,9 +17,9 @@ for j = 1:M
 end
 
 [LB_expected, LB_expected_delta]  = asianExpectedLowerBound(S0, K, sigma, r, T, n);
-Cb = PWDelta - bstarhat*(LB_sim-LB_expected_delta); 
+Cb = PWDelta - bstarhat*(LB_sim-LB_expected_delta); %calculates the control variate samples
 MCAsianArithDelta = mean(Cb);
-exec_time = toc;
-MCstd = std(Cb)/sqrt(M);
+exec_time = toc; %execution time
+MCstd = std(Cb)/sqrt(M); %standard error
 format short g
-MCConfInt = MCAsianArithDelta + norminv(0.5+alpha/2)*MCstd*[-1 1]; 
+MCConfInt = MCAsianArithDelta + norminv(0.5+alpha/2)*MCstd*[-1 1]; %confidence interval

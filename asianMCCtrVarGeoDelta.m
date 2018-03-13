@@ -16,9 +16,9 @@ for j = 1:M
 end
 
 [Geo_expected, Geo_expected_delta]  = geometricAsianExpected(S0, K, sigma, r, T, n);
-Cb = PWDelta - bstarhat*(Geo_sim-Geo_expected_delta); 
+Cb = PWDelta - bstarhat*(Geo_sim-Geo_expected_delta); %calculates the control variate samples
 MCAsianArithDelta = mean(Cb);
-exec_time = toc;
-MCstd = std(Cb)/sqrt(M);
+exec_time = toc; %execution time
+MCstd = std(Cb)/sqrt(M); %standard error
 format short g
-MCConfInt = MCAsianArithDelta + norminv(0.5+alpha/2)*MCstd*[-1 1]; 
+MCConfInt = MCAsianArithDelta + norminv(0.5+alpha/2)*MCstd*[-1 1]; %the confidence intervals
