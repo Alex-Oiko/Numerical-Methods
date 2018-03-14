@@ -18,7 +18,7 @@ for i=1:size(n,2)
         expected_asian_lower_bound_delta(i,k) = ELBdelta;
         [GeoAEprice, GeoAEdelta] = geometricAsianExpected(S0,K(k),sigma,r,T,n(i));
         geometric_asian_option_expected(i,k) = GeoAEprice;
-        geometric_asian_option_expecte_delta(i,k) = GeoAEdelta;
+        geometric_asian_option_expected_delta(i,k) = GeoAEdelta;
     end
 end
 
@@ -46,7 +46,7 @@ end
 %% Question 4 Delta as Control Variate
 geo_delta_simulations = [];
 lb_delta_simulations = [];
-epsilon = [];
+epsilon_delta = [];
 
 for i=1:size(n,2)
    for k = 1:size(K,2)
@@ -69,5 +69,7 @@ end
 %% Question 5
 continuous_monitoring = expectationContinuousMonitoring(S0,K(2),sigma,r,T);
 for i=1:20
-    continuous_monitoring_approx(i) = expectationContinuousMonitoringApprox(S0,K(2),sigma,r,T,2^i);
+    continuous_monitoring_approx(i) = asianExpectedLowerBound(S0,K(2),sigma,r,T,2^i);
 end
+
+plot(1:20,ones(size(1:20))*continuous_monitoring,1:20,continuous_monitoring_approx)
