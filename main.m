@@ -36,10 +36,11 @@ for i=1:size(n,2)
         [lb_std, lb_asian_price, lb_conf_int,lb_exec_time] = asianMCCtrVarLB(S0, K(k), sigma, r, T, dt, n(i), M, bstarhat_lb, alpha);
         [geo_std, geo_asian_price, geo_conf_int,geo_exec_time] = asianMCCtrVarGeo(S0, K(k), sigma, r, T, dt, n(i), M, bstarhat_geo, alpha);
         
-        lb_simulations(i,k,:) = [lb_std, lb_asian_price, lb_conf_int];
-        geo_simulations(i,k,:) = [geo_std, geo_asian_price, geo_conf_int];
+        lb_simulations(i,k,:) = [lb_std, lb_asian_price, lb_conf_int,lb_exec_time];
+        geo_simulations(i,k,:) = [geo_std, geo_asian_price, geo_conf_int,geo_exec_time];
         
         epsilon(i,k) = (lb_exec_time*lb_std^2)/(geo_exec_time*geo_std^2);
+    
     end
 end
 
@@ -57,8 +58,8 @@ for i=1:size(n,2)
        [lb_std_delta, lb_asian_delta, lb_conf_int_delta,lb_exec_delta_time] = asianMCCtrVarLBDelta(S0, K(k), sigma, r, T, dt, n(i), M, bstarhat_lb_delta, alpha);
        [geo_std_delta, geo_asian_delta, geo_conf_int_delta,geo_exec_delta_time] = asianMCCtrVarGeoDelta(S0, K(k), sigma, r, T, dt, n(i), M, bstarhat_geo_delta, alpha);
         
-       lb_delta_simulations(i,k,:) = [lb_std_delta, lb_asian_delta, lb_conf_int_delta];
-       geo_delta_simulations(i,k,:) = [geo_std_delta, geo_asian_delta, geo_conf_int_delta];
+       lb_delta_simulations(i,k,:) = [lb_std_delta, lb_asian_delta, lb_conf_int_delta, lb_exec_delta_time];
+       geo_delta_simulations(i,k,:) = [geo_std_delta, geo_asian_delta, geo_conf_int_delta, geo_exec_delta_time];
         
        epsilon_delta(i,k) = (lb_exec_delta_time*lb_std_delta^2)/(geo_exec_delta_time*geo_std_delta^2);
    end
