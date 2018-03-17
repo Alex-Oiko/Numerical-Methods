@@ -63,8 +63,8 @@ for i=1:size(n,2)
        epsilon_delta(i,k) = (lb_exec_delta_time*lb_std_delta^2)/(geo_exec_delta_time*geo_std_delta^2);
    end
 end
-
-
+correlcoef_lb_delta
+correlcoef_geo_delta
 
 %% Question 5
 continuous_monitoring = expectationContinuousMonitoring(S0,K(2),sigma,r,T);
@@ -73,3 +73,7 @@ for i=1:20
 end
 
 plot(1:20,ones(size(1:20))*continuous_monitoring,1:20,continuous_monitoring_approx)
+title('Convergence of the Expected Lower Bound')
+xlabel('Powers of 2')
+ylabel('Value of the Expected Lower Bound')
+legend('y = 7.726961356596341 (true value)','y = Expected Lower Bound approximation with changing n')

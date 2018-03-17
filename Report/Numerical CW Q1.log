@@ -1,4 +1,4 @@
-This is pdfTeX, Version 3.14159265-2.6-1.40.18 (TeX Live 2017) (preloaded format=pdflatex 2017.5.23)  13 MAR 2018 23:51
+This is pdfTeX, Version 3.14159265-2.6-1.40.18 (TeX Live 2017) (preloaded format=pdflatex 2017.5.23)  17 MAR 2018 18:20
 entering extended mode
  restricted \write18 enabled.
  file:line:error style messages enabled.
@@ -357,12 +357,12 @@ Overfull \hbox (0.69629pt too wide) in paragraph at lines 202--216
 [3] [4] <convergence.jpg, id=30, 1124.2pt x 843.15pt>
 File: convergence.jpg Graphic file (type jpg)
  <use convergence.jpg>
-Package pdftex.def Info: convergence.jpg used on input line 340.
+Package pdftex.def Info: convergence.jpg used on input line 339.
 (pdftex.def)             Requested size: 303.4866pt x 227.62204pt.
 
 
 LaTeX Warning: No positions in optional float specifier.
-               Default added (so using `tbp') on input line 349.
+               Default added (so using `tbp') on input line 345.
 
 [5 <./convergence.jpg>] [6] (./Numerical CW Q1.aux) ) 
 Here is how much of TeX's memory you used:
@@ -372,7 +372,7 @@ Here is how much of TeX's memory you used:
  7754 multiletter control sequences out of 15000+600000
  11994 words of font info for 50 fonts, out of 8000000 for 9000
  1141 hyphenation exceptions out of 8191
- 42i,12n,43p,325b,422s stack positions out of 5000i,500n,10000p,200000b,80000s
+ 42i,12n,43p,649b,387s stack positions out of 5000i,500n,10000p,200000b,80000s
  </Users/alexoiko/Library/
 texlive/2017/texmf-var/fonts/pk/ljfour/public/bbm/bbm10.600pk></usr/local/texli
 ve/2017/texmf-dist/fonts/type1/public/amsfonts/cm/cmbx10.pfb></usr/local/texliv
@@ -389,7 +389,7 @@ f-dist/fonts/type1/public/amsfonts/cm/cmr7.pfb></usr/local/texlive/2017/texmf-d
 ist/fonts/type1/public/amsfonts/cm/cmsy10.pfb></usr/local/texlive/2017/texmf-di
 st/fonts/type1/public/amsfonts/cm/cmsy7.pfb></usr/local/texlive/2017/texmf-dist
 /fonts/type1/public/amsfonts/symbols/msbm10.pfb>
-Output written on "Numerical CW Q1.pdf" (6 pages, 184601 bytes).
+Output written on "Numerical CW Q1.pdf" (6 pages, 205321 bytes).
 PDF statistics:
  85 PDF objects out of 1000 (max. 8388607)
  60 compressed objects within 1 object stream

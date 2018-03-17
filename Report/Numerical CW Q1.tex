@@ -47,7 +47,7 @@ by multiplying and dividing $g_\theta\left(s\right)$ the expectation expression 
 \int_{R^n}^{} f \left(s\right)\frac{d \, g_\theta\left(s\right)}{d \theta} \frac{1}{g_\theta\left(s\right) }g_\theta\left(s\right) ds &= \E_\theta \left(f\left(S\right)\frac{d \, g_\theta\left(S\right)}{d \theta} \frac{1}{g_\theta\left(S\right) }\right)\\
 &= \E_\theta \left(f\left(S\right)\frac{d \,ln \, g_\theta \left(S\right)}{d \, \theta}\right)\\
 \end{align*}
-using the above expression, we take the expected value of the product of the discounted payoff function and the score as the LR first order sensitivity respected to $S_0$. We have the discounted payoff functions for the arithmetic Asian option Lower Bound  and for the geometric Asian option in below.
+using the above expression, we take the expected value of the product of the discounted payoff function and the score as the LR first order sensitivity respected to $S_0$. We have the discounted payoff functions for the arithmetic Asian option Lower Bound  and for the geometric Asian option below.
 \begin{align*}
 LB_n &= e^{-rT}\left( \frac{1}{n}\sum_{k=1}^{n}S_k - K\right) \mathbbm{1}_{\left( \prod_{k=1}^{n}S_k\right) ^{\frac{1}{n}} >K}\\
 G_n &= e^{-rT} max \left(\left(\prod_{k=1}^{n}S_k\right) ^{\frac{1}{n}} - K, 0 \right)\\
@@ -69,7 +69,7 @@ the score for computing an Asian option delta is given as
 \mu'_{G, S_0} &= \E _{S_0}\left(e^{-rT}\left(\left(\prod_{k=1}^{n}S_k\right) ^{\frac{1}{n}} - K\right)^{+} \cdot \frac{\xi\left(S_i|S_{i-1}\right)}{S_0 \sigma \sqrt{t_1}} \right)\\
 \end{align*}
 \subsubsection{}
-Now, as shown above, the lower bound payoff is discontinuous at $\left( \prod_{k=1}^{n}S_k\right) ^{\frac{1}{n}} =K$. Such that it is not possible to obtain the PW estimator. LR first order sensitivity estimator should be used instead.
+Now, as shown above, the lower bound payoff is discontinuous at $\left( \prod_{k=1}^{n}S_k\right) ^{\frac{1}{n}} =K$. Hence it is not possible to obtain the PW estimator. LR first order sensitivity estimator should be used instead.
 
 \subsection{}
 The exact closed formed solutions for the expected Lower Bound and the Geometric payoff are given
@@ -96,7 +96,7 @@ by taking the derivative respected to $S_0$
 where $\mathcal{N}$ is the normal cdf and $\phi$ is the normal pdf.
 \subsection{}
 \subsubsection{}
-The table for the expected lower bounds is the following:
+Table 1 describes the computed values for the expected lower bound using different values for equally spaced dates and strike prices.
 
 \begin{center}
 \begin{table}[ht]
@@ -120,7 +120,7 @@ The table for the expected lower bounds is the following:
 \end{table} 
 \end{center}
 
-The table for the first sensitivities of the expected lower bounds with respect to S\textsubscript{0} is the following:
+Table 2 describes the computed values for the first sensitivities of the expected lower bounds using different values for equally spaced dates and strike prices.
 
 \begin{center}
 \begin{table}[ht]
@@ -147,7 +147,7 @@ The table for the first sensitivities of the expected lower bounds with respect 
 
 \subsubsection{}
 
-The table for the geometric Asian call option prices is the following:
+Table 3 displays the geometric asian call option values for different n's and K's.
 
 \begin{center}
 \begin{table}[ht]
@@ -171,7 +171,7 @@ The table for the geometric Asian call option prices is the following:
   \captionof{table}{Geometric Asian Call Option Values}
 \end{center}
 
-The table for the first sensitivities with respect to S\textsubscript{0} for the geometric Asian option prices is the following:
+Table 4 shows the values for the first sensitivities with respect to S\textsubscript{0} for the geometric Asian option prices.
 
 \begin{center}
 \begin{table}[ht]
@@ -197,7 +197,7 @@ The table for the first sensitivities with respect to S\textsubscript{0} for the
 
 \subsection{}
 \subsubsection{}
-The table for the Asian call option prices approximated using Monte Carlo simulations using the expected lower bound as a control variate. The table also displays the standard errors and the confidence intervals:
+Table 5 approximates the value of the Asian call option prices using Monte Carlo simulations and the lower bound as a control variate.  The standard error (S.E.) and the confidence intervals (C.I) can also be viewed.
 \begin{center}
 \begin{tabular}{|c|c|c|c|c|c|c|c|c|c|}
 \multicolumn{10}{c}{K} \tabularnewline
@@ -213,13 +213,10 @@ The table for the Asian call option prices approximated using Monte Carlo simula
  \bfseries 50 & 13.8019 & 0.00017443 & 13.8016-13.8023 & 7.8525 & 0.00014983 & 7.8522-7.8528 & 4.0315 & 0.0002129& 4.0311-4.0319 \\
   \hline
 \end{tabular}
-  \captionof{table}{Approximation with Expected Lower Bound as Control Variate}
+  \captionof{table}{Approximation with Lower Bound as Control Variate}
 \end{center}
  
-
-
-The table for the Asian call option prices approximated using Monte Carlo simulations using the geometric asian call option with discounted payoff as a control variate. The table also displays the standard errors and the confidence intervals:
-\begin{center}
+Table 6 approximates the Asian call option prices using Monte Carlo simulations and the geometric asian call option with discounted payoff as a control variate. It also includes the standard error  (S.E) and the confidence intervales (C.I.)\begin{center}
 \begin{tabular}{|c|c|c|c|c|c|c|c|c|c|}
 \multicolumn{10}{c}{K} \tabularnewline
 \hline
@@ -237,7 +234,7 @@ The table for the Asian call option prices approximated using Monte Carlo simula
   \captionof{table}{Approximation with Geometric Asian Call Option as Control Variate}
 \end{center}
 
-The table with the epsilon values for each strike price and n is the following. It measures which of the two control variates is more efficient:
+Table 7 shows the epsilon values (efficiency ratios) for the different strike prices and equally spaced dates. The values display the ratio between the two approximations with different control variates. The numerator is the efficiency of the approximation with the lower bound as a control variate and the denominator is the efficiency of the approximation with the geometric Asian option as a control variate. It is clear from Table 7 that using the expected lower bound as a control variate is more efficient than using the geometric asian call option.
 
 \begin{center}
 \begin{table}[ht]
@@ -258,13 +255,11 @@ The table with the epsilon values for each strike price and n is the following. 
     \cline{2-5}
   \end{tabular}
 \end{table} 
-  \captionof{table}{Efficiency Values}
+  \captionof{table}{Efficiency Values for the arithmetic Asian option price}
 \end{center}
 
-It is clear from Table 7 that the using the expected lower bound is more efficient than using the geometric asian call option.
-
 \subsubsection{}
-The table for the Asian call option sensitivity with respect to S\textsubscript{0} approximated using Monte Carlo simulations using the sensitivity of the lower bound as a control variate. The table also displays the standard errors and the confidence intervals:
+Table 8  approximates the Asian call option sensitivity with respect to S\textsubscript{0} using Monte Carlo simulations and the sensitivity of the lower bound as a control variate. The table also displays the standard errors (S.E) and the confidence intervals (C.I).
 \begin{center}
 \begin{tabular}{|c|c|c|c|c|c|c|c|c|c|}
 \multicolumn{10}{c}{K} \tabularnewline
@@ -280,12 +275,10 @@ The table for the Asian call option sensitivity with respect to S\textsubscript{
  \bfseries 50 & 0.7793 & 0.00028271 & 0.7788-0.7798 & 0.5730 & 0.00030121 & 0.5724-0.5736 & 0.3673 & 0.00033988 & 0.3667-0.3680 \\
   \hline
 \end{tabular}
-  \captionof{table}{Approximation with Expected Lower Bound as Control Variate}
+  \captionof{table}{Approximation with Lower Bound as Control Variate}
 \end{center}
  
-
-
-The table for the Asian call option sensitivity with respect to S\textsubscript{0} approximated using Monte Carlo simulations using the sensitivity of the geometric Asian option as a control variate. The table also displays the standard errors and the confidence intervals:
+Table 9 approximates the Asian call option sensitivity with respect to S\textsubscript{0} using Monte Carlo simulations and the sensitivity of the geometric Asian option as a control variate. The table also displays the standard errors (S.E) and the confidence intervals (C.I).
 \begin{tabular}{|c|c|c|c|c|c|c|c|c|c|}
 \multicolumn{10}{c}{K} \tabularnewline
 \hline
@@ -302,8 +295,8 @@ The table for the Asian call option sensitivity with respect to S\textsubscript{
 \end{tabular}
   \captionof{table}{Approximation with Geometric Asian Call Option as Control Variate}
 
-
-The table with the epsilon values for each strike price and n is the following. It measures which of the two control variates is more efficient:
+Table 10 shows the epsilon values (efficiency ratios) for the different strike prices and equally spaced dates. The values display the ratio between the two approximations with different control variates. The numerator is the efficiency of the approximation with the sensitivity  of the expected lower bound as a control variate and the denominator is the efficiency of the approximation with the sensitivity of the geometric Asian option as a control variate. It is clear from Table 10 that using the sensitivity of the expected lower bound as a control variate is more efficient than using the geometric asian call option. 
+It is clear from Table 10 that the using the sensitivity of the expected lower bound is more efficient than using the geometric asian call option.
 \newpage
 \begin{table}[ht]
   \large
@@ -322,29 +315,32 @@ The table with the epsilon values for each strike price and n is the following. 
     \cline{2-5}
     \cline{2-5}
   \end{tabular}
-    \captionof{table}{Efficiency Values}
+    \captionof{table}{Efficiency Values for the sensitivity of the arithmetic Asian option price}
 \end{table} 
 
-It is clear from Table 10 that the using the sensitivity of the expected lower bound is more efficient than using the geometric asian call option.
-
 \subsubsection{}
+The accuracy of the 95\% confidence intervals of the control variate estimations can be displayed by the tightness that exists. This is true for all the approximations that were executed, both for the arithmetic asian call option, but also for the sensitivities. More concretely, observing tables 5,6,8 and 9 and subtracting the confidence intervals, the difference between the two values is of the 10\textsuperscript{-4} for the more accurate approximations and 10\textsuperscript{-3} for the less efficient ones. 
+\newline
+Control variates provide a better estimate for the estimation of the Asian Call Options and their sensitivities. In general, the higher the correlation between the variables, the more accurate the approximated value. In this case, the correlation is similar and very high between the two control variates and the payoff as well as the sensitivities, which means that the selection of the control variate is not very important.
 
+It is also clear from the efficiency Table 7 that there is a lot more efficiency when using the lower bound as a control variate with respect to the geometric option.  Since the standard errors seem to be similar, the reason could be assigned to the construction of the control variate. 
+\newline
+As it is to be expected, the price of the option and of the sensitivities is more accurate the higher the n (when controlling for K). The reason for that would be that there are more values computed and a more accurate coefficient and bstarhat can be created. This is also apparent in Tables 5 and 6, where there is the standard error is less with higher n's. The downside of these is that it is more computationally expensive as more commands need to be executed. The same goes for higher K's as far as prices are concerned. 
+\newline
+Finally, observing Tables 1,5 and 6, it is clear that all prices are very close with the value of the expected lower bound for the price. This is to be expected, as it uses a version of the Black-Scholes formula with the Asian option payoff embedded.
 
 \subsection{}
-Running the expected lower bound with increasing values of n gives a good approximation for the precise value of the expected value. As expected the higher the value of n the bigger the convergence to the precise value. 
+Running the expected lower bound with increasing values of n gives a good approximation for the precise value of the expected value. As expected the higher the value of n the better the convergence to the precise value. 
 
-Concretely, the precise value for the expected lower bound is \textbf{7.726961356596341}. Plotting the approximations the following figure can be presented.
 
+Concretely, the precise value for the expected lower bound is \textbf{7.726961356596341}. Figure 1, shows the convergence of the value with respect to increasing n's.  
 \begin{figure}[H]
 \centering
         \includegraphics[totalheight=8cm]{convergence.jpg}
         \caption{Convergence of the approximation}
 \end{figure}
 
-As it is visible from Figure 1, the approximation gets better when the n is close to the power of 10, and the precision improves as it gets closer to higher n's.
-\newline
-\newline
-The table can be reviewed for further analysis of the precision of the approximation method.
+Table SSSSSS can be reviewed for further analysis of the approximation method precision.
 
 \begin{table}[]
 \centering
