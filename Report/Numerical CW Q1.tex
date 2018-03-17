@@ -93,7 +93,10 @@ by taking the derivative respected to $S_0$
 & - K e^{-rT} \cdot \phi\left(d - \hat{\sigma}\sqrt{\hat{T}}\right) \cdot \frac{1}{S_0}\frac{1}{\hat{\sigma}\sqrt{\hat{T}}}\\
 \end{align*}
 
-where $\mathcal{N}$ is the normal cdf and $\phi$ is the normal pdf.
+where $\mathcal{N}$ is the normal cdf and $\phi$ is the normal pdf. And $b = \frac{ln\left(S_0/K\right) + \left(r - \sigma^2/2\right)\hat{T}}{\hat{\sigma}\sqrt{\hat{T}}}$, $d = \frac{ln\left(S_0/K\right) + \left(r - \sigma^2/2 + \hat{\sigma}^2\right)\hat{T}}{\hat{\sigma}\sqrt{\hat{T}}}$.
+
+
+
 \subsection{}
 \subsubsection{}
 Table 1 describes the computed values for the expected lower bound using different values for equally spaced dates and strike prices.
@@ -266,7 +269,7 @@ Table 8  approximates the Asian call option sensitivity with respect to S\textsu
 \hline
 \multirow{3}{*}{} & \multicolumn{3}{c|}{\bfseries 90}  & \multicolumn{3}{c|}{\bfseries 100} & \multicolumn{3}{c|}{\bfseries 110} \\
 \cline{2-10}
- & Price & S.E. & C.I. & Price & S.E.. & C.I. & Price & S.E. & C.I \\
+ & $\Delta$ & S.E. & C.I. & $\Delta$ & S.E.. & C.I. & $\Delta$ & S.E. & C.I \\
 \hline
  \bfseries 4 & 0.7639 &  0.00027227 & 0.7633-0.7644 & 0.5856 & 0.00029519 & 0.5850-0.5861 & 0.4071 & 0.00032565 & 0.4064-0.4077   \\
 \hline
@@ -284,7 +287,7 @@ Table 9 approximates the Asian call option sensitivity with respect to S\textsub
 \hline
 \multirow{3}{*}{} & \multicolumn{3}{c|}{\bfseries 90}  & \multicolumn{3}{c|}{\bfseries 100} & \multicolumn{3}{c|}{\bfseries 110} \\
 \cline{2-10}
- & Price & S.E. & C.I. & Price & S.E.. & C.I. & Price & S.E. & C.I \\
+ & $\Delta$ & S.E. & C.I. & $\Delta$ & S.E.. & C.I. & $\Delta$ & S.E. & C.I \\
 \hline
  \bfseries 4 & 0.7560 &  0.00026752 & 0.7554-0.7565 & 0.5761 & 0.00029418 & 0.5755-0.5767 & 0.3966 & 0.00032115 & 0.3959-0.3972   \\
 \hline
