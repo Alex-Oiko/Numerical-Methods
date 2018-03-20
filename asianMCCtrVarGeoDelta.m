@@ -12,7 +12,7 @@ for j = 1:M
         S(i+1) = S(i)*exp((r-sigma^2/2)*dt+sigma*sqrt(dt)*randn); 
     end
     PWDelta(j) = exp(-r*T)*(mean(S(2:n+1))/S0)*(mean(S(2:n+1)) > K); % simulates samples of the PW arithematic delta
-    Geo_sim(j) = exp(-r*T)*(geomean(S(2:n+1))/S0)*(geomean(S(2:n+1)) > K); % simulates samples of the lowerbound delta
+    Geo_sim(j) = exp(-r*T)*(geomean(S(2:n+1))/S0)*(geomean(S(2:n+1)) > K)*(log(S(2)/K)- (r-0.5*sigma^2)*dt)/(S0*sigma^2*dt); % simulates samples of the lowerbound delta
 end
 
 [Geo_expected, Geo_expected_delta]  = geometricAsianExpected(S0, K, sigma, r, T, n);

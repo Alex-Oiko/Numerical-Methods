@@ -65,7 +65,7 @@ for i=1:size(n,2)
         
        epsilon_delta(i,k) = (lb_exec_delta_time*lb_std_delta^2)/(geo_exec_delta_time*geo_std_delta^2);
    end
-
+end
 %% Question 5
 continuous_monitoring = expectationContinuousMonitoring(S0,K(2),sigma,r,T);
 for i=1:20

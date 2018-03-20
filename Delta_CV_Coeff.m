@@ -16,8 +16,9 @@ for j = 1:Mb
         S(i+1) = S(i)*exp((r-sigma^2/2)*dt+sigma*sqrt(dt)*randn); 
     end
     C(j) = exp(-r*T)*(mean(S(2:n+1))/S0)*(mean(S(2:n+1)) > K);       % Arithematic Option Delta using pathwise method
-    P(j) = exp(-r*T)*(geomean(S(2:n+1))/S0)*(geomean(S(2:n+1)) > K);    % Geometric Option Delta
-    LB(j) = exp(-r*T)*(geomean(S(2:n+1))>K)*(mean(S(2:n+1)/S0));    %Lowerbound Delta
+    P(j) = exp(-r*T)*(geomean(S(2:n+1))/S0)*(geomean(S(2:n+1)) > K);    % Geometric Option Delta    
+    LB(j) = exp(-r*T)*(mean(S(2:n+1))-K)*(geomean(S(2:n+1)) > K)...
+    *(log(S(2)/K)- (r-0.5*sigma^2)*dt)/(S0*sigma^2*dt); %Lowerbound Delta
 end
 
 bstarhat_lb_delta = sum((C-mean(C)).*(LB-mean(LB)))/sum((LB-mean(LB)).^2); 
