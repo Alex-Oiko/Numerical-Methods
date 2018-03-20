@@ -26,6 +26,7 @@ end
 geo_simulations = [];
 lb_simulations = [];
 epsilon = [];
+asian_price_vector = [];
 
 for i=1:size(n,2)
     for k = 1:size(K,2)
@@ -35,10 +36,11 @@ for i=1:size(n,2)
         
         [lb_std, lb_asian_price, lb_conf_int,lb_exec_time] = asianMCCtrVarLB(S0, K(k), sigma, r, T, dt, n(i), M, bstarhat_lb, alpha);
         [geo_std, geo_asian_price, geo_conf_int,geo_exec_time] = asianMCCtrVarGeo(S0, K(k), sigma, r, T, dt, n(i), M, bstarhat_geo, alpha);
+        [asian_std, asian_price, asian_conf_int,asian_exec_time] = asianMC(S0, K(k), sigma, r, T, dt, n(i), M,alpha);
         
         lb_simulations(i,k,:) = [lb_std, lb_asian_price, lb_conf_int,lb_exec_time];
         geo_simulations(i,k,:) = [geo_std, geo_asian_price, geo_conf_int,geo_exec_time];
-        
+        asian_price_vector(i,k,:) = [asian_std, asian_price, asian_conf_int,asian_exec_time];
         epsilon(i,k) = (lb_exec_time*lb_std^2)/(geo_exec_time*geo_std^2);
     
     end
@@ -63,9 +65,6 @@ for i=1:size(n,2)
         
        epsilon_delta(i,k) = (lb_exec_delta_time*lb_std_delta^2)/(geo_exec_delta_time*geo_std_delta^2);
    end
-end
-correlcoef_lb_delta
-correlcoef_geo_delta
 
 %% Question 5
 continuous_monitoring = expectationContinuousMonitoring(S0,K(2),sigma,r,T);
