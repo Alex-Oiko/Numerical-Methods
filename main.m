@@ -63,7 +63,7 @@ for i=1:size(n,2)
        lb_delta_simulations(i,k,:) = [lb_std_delta, lb_asian_delta, lb_conf_int_delta, lb_exec_delta_time];
        geo_delta_simulations(i,k,:) = [geo_std_delta, geo_asian_delta, geo_conf_int_delta, geo_exec_delta_time];
         
-       epsilon_delta(i,k) = (lb_exec_delta_time*lb_std_delta^2)/(geo_exec_delta_time*geo_std_delta^2);
+       epsilon_delta(i,k) =  (lb_exec_delta_time*lb_std_delta^2)/(geo_exec_delta_time*geo_std_delta^2);
    end
 end
 %% Question 5

@@ -11,12 +11,14 @@ for j = 1:M
     for i = 1:n
         S(i+1) = S(i)*exp((r-sigma^2/2)*dt+sigma*sqrt(dt)*randn); 
     end
-    LRDelta(j) = exp(-r*T)*max(mean(S(2:n+1))-K,0)*(log(S(2)/K)- (r-0.5*sigma^2)*dt)/(S0*sigma^2*dt); % simulates samples of the LR arithematic delta
-    Geo_sim(j) = exp(-r*T)*max(geomean(S(2:n+1))-K,0)*(log(S(2)/K)- (r-0.5*sigma^2)*dt)/(S0*sigma^2*dt); % simulates samples of the lowerbound delta
+    LR_ADelta(j) = exp(-r*T)*max(mean(S(2:n+1))-K,0)*(log(S(2)/S0)...
+        - (r-0.5*sigma^2)*dt)/(S0*sigma^2*dt); % simulates samples of the LR arithematic delta
+    Geo_sim(j) = exp(-r*T)*max(geomean(S(2:n+1))-K,0)*(log(S(2)/S0)...
+        - (r-0.5*sigma^2)*dt)/(S0*sigma^2*dt); % simulates samples of the lowerbound delta
 end
 
 [Geo_expected, Geo_expected_delta]  = geometricAsianExpected(S0, K, sigma, r, T, n);
-Cb = LRDelta - bstarhat*(Geo_sim-Geo_expected_delta); %calculates the control variate samples
+Cb = LR_ADelta - bstarhat*(Geo_sim-Geo_expected_delta); %calculates the control variate samples
 MCAsianArithDelta = mean(Cb);
 exec_time = toc; %execution time
 MCstd = std(Cb)/sqrt(M); %standard error

@@ -12,8 +12,8 @@ for j = 1:M
     for i = 1:n
         S(i+1) = S(i)*exp((r-sigma^2/2)*dt+sigma*sqrt(dt)*randn); 
     end
-    LRDelta(j) = exp(-r*T)*max(mean(S(2:n+1))-K,0)*(log(S(2)/K)- (r-0.5*sigma^2)*dt)/(S0*sigma^2*dt); % simulates samples of the LR arithematic delta
-    LB_sim(j) = exp(-r*T)*(mean(S(2:n+1))-K)*(geomean(S(2:n+1)) > K)*(log(S(2)/K)- (r-0.5*sigma^2)*dt)/(S0*sigma^2*dt); % simulates samples of the lowerbound delta
+    LRDelta(j) = exp(-r*T)*max(mean(S(2:n+1))-K,0)*(log(S(2)/S0)- (r-0.5*sigma^2)*dt)/(S0*sigma^2*dt); % simulates samples of the LR arithematic delta
+    LB_sim(j) = exp(-r*T)*(mean(S(2:n+1))-K)*(geomean(S(2:n+1)) > K)*(log(S(2)/S0)- (r-0.5*sigma^2)*dt)/(S0*sigma^2*dt); % simulates samples of the lowerbound delta
 end
 
 [LB_expected, LB_expected_delta]  = asianExpectedLowerBound(S0, K, sigma, r, T, n);

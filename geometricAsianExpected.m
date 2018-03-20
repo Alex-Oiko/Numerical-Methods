@@ -17,3 +17,4 @@ function [geometric_asian_expected_asian, geometric_asian_expected_delta] = geom
     + S0*exp((r-sigma^2/2+sigma_hat^2/2)*T_hat-r*T)*normpdf(d)*(1/S0)*(1/(sigma_hat*sqrt(T_hat))) ...
     - K*exp(-r*T)*normpdf(d-sigma_hat*sqrt(T_hat))*(1/S0)*(1/(sigma_hat*sqrt(T_hat)));
 end
+
