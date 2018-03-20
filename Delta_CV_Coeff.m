@@ -15,8 +15,10 @@ for j = 1:Mb
     for i = 1:n
         S(i+1) = S(i)*exp((r-sigma^2/2)*dt+sigma*sqrt(dt)*randn); 
     end
-    C(j) = exp(-r*T)*(mean(S(2:n+1))/S0)*(mean(S(2:n+1)) > K);       % Arithematic Option Delta using pathwise method
-    P(j) = exp(-r*T)*(geomean(S(2:n+1))/S0)*(geomean(S(2:n+1)) > K);    % Geometric Option Delta    
+    C(j) = exp(-r*T)*max(mean(S(2:n+1))-K,0)*(log(S(2)/K)...
+        - (r-0.5*sigma^2)*dt)/(S0*sigma^2*dt);  % Arithematic Option Delta using LR method
+    P(j) = exp(-r*T)*max(geomean(S(2:n+1))-K,0)*(log(S(2)/K)...
+        - (r-0.5*sigma^2)*dt)/(S0*sigma^2*dt);    % Geometric Option Delta    
     LB(j) = exp(-r*T)*(mean(S(2:n+1))-K)*(geomean(S(2:n+1)) > K)...
     *(log(S(2)/K)- (r-0.5*sigma^2)*dt)/(S0*sigma^2*dt); %Lowerbound Delta
 end
