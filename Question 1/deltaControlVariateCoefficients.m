@@ -4,7 +4,7 @@
 %%% bound delta
 %%% coefficients
 
-function [correlcoef_lb_delta, bstarhat_lb_delta,correlcoef_geo_delta, bstarhat_geo_delta] = Delta_CV_Coeff(S0, K, sigma, r, T, dt, Mb)
+function [correlcoef_lb_delta, bstarhat_lb_delta,correlcoef_geo_delta, bstarhat_geo_delta] = deltaControlVariateCoefficients(S0, K, sigma, r, T, dt, Mb)
 
 n = T/dt;
 C = zeros(1,Mb);  

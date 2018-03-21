@@ -49,6 +49,7 @@ end
 %% Question 4 Delta as Control Variate
 geo_delta_simulations = [];
 lb_delta_simulations = [];
+asian_delta = [];
 epsilon_delta = [];
 
 for i=1:size(n,2)
@@ -59,10 +60,11 @@ for i=1:size(n,2)
         
        [lb_std_delta, lb_asian_delta, lb_conf_int_delta,lb_exec_delta_time] = asianMCCtrVarLBDelta(S0, K(k), sigma, r, T, dt, n(i), M, bstarhat_lb_delta, alpha);
        [geo_std_delta, geo_asian_delta, geo_conf_int_delta,geo_exec_delta_time] = asianMCCtrVarGeoDelta(S0, K(k), sigma, r, T, dt, n(i), M, bstarhat_geo_delta, alpha);
+       [asian_std_delta, asian_price_delta, asian_conf_int_delta,asian_exec_time_delta] = asianMC(S0, K(k), sigma, r, T, dt, n(i), M,alpha);
         
        lb_delta_simulations(i,k,:) = [lb_std_delta, lb_asian_delta, lb_conf_int_delta, lb_exec_delta_time];
        geo_delta_simulations(i,k,:) = [geo_std_delta, geo_asian_delta, geo_conf_int_delta, geo_exec_delta_time];
-        
+       asian_delta(i,k,:) = [asian_std_delta, asian_price_delta, asian_conf_int_delta,asian_exec_time_delta];
        epsilon_delta(i,k) =  (lb_exec_delta_time*lb_std_delta^2)/(geo_exec_delta_time*geo_std_delta^2);
    end
 end
